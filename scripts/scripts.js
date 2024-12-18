@@ -23,13 +23,54 @@ function innerContentHandler() {
 	}
 	if (operator !== "" && num2 > 0 && result) {
 		temp = result;
-    num1 = result;
+		num1 = result;
 		operator = "";
 		num2 = 0;
 		result = undefined;
 	}
 
 	expression.textContent = temp;
+}
+
+function fillNums(num) {
+	if (operator == "") {
+		num1 = num1 * 10 + +num;
+		innerContentHandler();
+	}
+	if (operator != "") {
+		num2 = num2 * 10 + +num;
+		innerContentHandler();
+	}
+}
+
+function getOperator(targetOperator) {
+	operator = targetOperator;
+	innerContentHandler();
+}
+
+function showResult() {
+	if (operator == "+") {
+		result = num1 + num2;
+	} else if (operator == "-") {
+		result = num1 - num2;
+	} else if (operator == "*") {
+		result = num1 * num2;
+	} else if (operator == "/") {
+		result = num1 / num2;
+	}
+
+	if (result % 1 !== 0) {
+		result = result.toFixed(2);
+	}
+
+	innerContentHandler();
+}
+
+function clearCalculator() {
+	num1 = 0;
+	num2 = 0;
+	operator = "";
+	innerContentHandler();
 }
 
 innerContentHandler();
@@ -55,18 +96,48 @@ for (let i = 0; i < mathOperations.length; i++) {
 	});
 }
 
-equal.addEventListener("click", () => {
-	if (operator == "+") {
-		result = num1 + num2;
-	} else if (operator == "-") {
-		result = num1 - num2;
-	} else if (operator == "*") {
-		result = num1 * num2;
-	} else if (operator == "/") {
-		result = num1 / num2;
-	}
-	innerContentHandler();
+equal.addEventListener("click", showResult);
+
+clear.addEventListener("click", () => {
+	clearCalculator();
 });
+
+window.addEventListener("keypress", (event) => {
+	if (
+		event.key == "0" ||
+		event.key == "1" ||
+		event.key == "2" ||
+		event.key == "3" ||
+		event.key == "4" ||
+		event.key == "5" ||
+		event.key == "6" ||
+		event.key == "7" ||
+		event.key == "8" ||
+		event.key == "9"
+	) {
+		fillNums(event.key);
+	}
+
+	if (
+		event.key == "/" ||
+		event.key == "*" ||
+		event.key == "-" ||
+		event.key == "+"
+	) {
+		getOperator(event.key);
+	}
+
+	if (event.key == "Enter") {
+		showResult();
+	}
+
+	if (event.key == ".") {
+		clearCalculator();
+	}
+});
+
+//////////////////////////////////////////////////////////////////
+// the code below is for working without functions
 
 // for (let i = 0; i < numberButtons.length; i++) {
 // 	numberButtons[i].addEventListener("click", (event) => {
@@ -103,13 +174,6 @@ equal.addEventListener("click", () => {
 // 	decimalResult = result.toFixed(2);
 // 	expression.textContent = result % 1 == 0 ? result : decimalResult;
 // });
-
-clear.addEventListener("click", (event) => {
-	num1 = 0;
-	num2 = 0;
-	operator = "";
-	expression.textContent = "0";
-});
 
 // parantheses[0].addEventListener("click", (event) => {
 // 	let last = expression.textContent.slice(-1);
