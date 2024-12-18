@@ -1,0 +1,27 @@
+{
+	"name": "calculator",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"minify-html": "html-minifier-terser src/html/index.html --collapse-whitespace --output=dist/index.html",
+		"optimize-css": "postcss src/styles/styles.css --use autoprefixer cssnano postcss-pxtorem --output dist/styles.css --no-map",
+		"transpile-js": "babel src/scripts/scripts.js -o dist/scripts.js --presets=@babel/preset-env",
+		"minify-js": "uglifyjs dist/scripts.js --compress -o dist/scripts.js",
+		"build": "npm run minify-html && npm run optimize-css && npm run transpile-js && npm run minify-js"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@babel/cli": "^7.26.4",
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0",
+		"autoprefixer": "^10.4.20",
+		"cssnano": "^7.0.6",
+		"html-minifier-terser": "^7.2.0",
+		"postcss": "^8.4.49",
+		"postcss-cli": "^11.0.0",
+		"postcss-pxtorem": "^6.1.0",
+		"uglify-js": "^3.19.3"
+	}
+}
