@@ -37,6 +37,9 @@ main {
   width: 100%;
   height: 50px;
   background: gray;
+  line-height: 50px;
+  padding-left: 40px;
+  font-size: 30px;
 }
 
 .buttons {
