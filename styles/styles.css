@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter",
+    serif;
+}
+
+body {
+  width: 98vw;
+  background: rgb(110, 110, 110);
+}
+
+main {
+  width: 100%;
+}
+
+.calculator {
+  width: 20%;
+  min-width: 350px;
+  background: rgb(26, 26, 26);
+  margin: 3% auto;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.num-display {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: rgb(26, 26, 26);
+}
+
+.digits{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: gray;
+}
+
+.buttons {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 10px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.buttons>button {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border: none;
+  background: rgba(77, 77, 77, 0.8);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.buttons>button:hover {
+  background: rgba(77, 77, 77, 1);
+  cursor: pointer;
+}
+
+.buttons .num0 {
+  grid-column: 1/ 3;
+  justify-content: start;
+  width: 80%;
+  border-radius: 30px;
+  padding-left: 20px;
+}
+
+.buttons .top-operands {
+  background: rgba(185, 185, 185, 0.8);
+  color: black;
+}
+
+.buttons .top-operands:hover {
+  background: rgba(185, 185, 185, 1);
+}
+
+.buttons .right-operands {
+  background: rgba(238, 155, 0, 0.8);
+}
+
+.buttons .right-operands:hover {
+  background: rgba(238, 155, 0, 1);
+}
