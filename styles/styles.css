@@ -40,6 +40,7 @@ main {
   background: rgb(26, 26, 26);
   line-height: 50px;
   padding-left: 40px;
+  padding-right: 40px;
   font-size: 30px;
 }
 
